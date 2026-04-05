@@ -12,7 +12,7 @@
   --color-dark-bg: #0d0d0d;
   --color-dark-card: #1a1a1a;
   --color-green-accent: #22c55e;
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-jakarta);
   --font-mono: "JetBrains Mono", "SF Mono", monospace;
   --font-display: "Inter", system-ui, sans-serif;
   --font-heading: var(--font-sans);
@@ -60,8 +60,21 @@ html {
 body {
   background: #ffffff;
   color: #171717;
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+}
+
+/* Agent image - remove grey background on white sections via mix-blend-mode */
+.agent-img-light img {
+  mix-blend-mode: multiply;
+}
+
+/* Agent image on dark sections - make grey bg transparent */
+.agent-img-dark {
+  position: relative;
+}
+.agent-img-dark img {
+  mix-blend-mode: screen;
 }
 
 /* Section label styling */
@@ -118,13 +131,13 @@ body {
 /* Floating pills */
 .pill {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 999px;
-  padding: 0.5rem 1.25rem;
-  background: rgba(255, 255, 255, 0.8);
+  padding: 0.6rem 1.4rem;
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
   white-space: nowrap;
 }
@@ -175,8 +188,15 @@ body {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
 .animate-scroll-left {
-  animation: scroll-left 30s linear infinite;
+  animation: scroll-left 25s linear infinite;
+}
+.animate-scroll-right {
+  animation: scroll-right 25s linear infinite;
 }
 
 /* Counter animation */
